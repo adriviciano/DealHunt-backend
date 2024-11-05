@@ -1,6 +1,7 @@
 import express from 'express';
 import { cargarProductosMercadona } from './mercadona/mercadona.js';
 import { cargarProductosDia } from './dia/dia.js';
+import { compararProductos } from './common/comparator.js';
 import cors from 'cors';
 
 const app = express();
@@ -16,6 +17,12 @@ app.get('/mercadona/:palabra', async (req, res) => {
 app.get('/dia/:palabra', async (req, res) => {
   const { palabra } = req.params;
   const productos = await cargarProductosDia(palabra);
+  res.json(productos);
+});
+
+app.get('/compare/:palabra', async (req, res) => {
+  const { palabra } = req.params;
+  const productos = await compararProductos(palabra);
   res.json(productos);
 });
 
