@@ -3,15 +3,12 @@
 import path from 'path';
 import fs from 'fs';
 
-
-// Función para buscar productos por nombre
-export function buscarProductosPorNombre(productos, palabra) {
+function buscarProductosPorNombre(productos, palabra) {
     const palabraLower = palabra.toLowerCase();
     return productos.filter(producto => 
         producto.nombre.toLowerCase().includes(palabraLower)
     );
 }
-
 
 // Cargar el JSON desde el archivo
 export async function cargarProductosDia(palabraBuscada) {
